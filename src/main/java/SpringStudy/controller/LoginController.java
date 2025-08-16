@@ -5,7 +5,6 @@ import SpringStudy.dto.UserDto;
 import SpringStudy.entity.Users;
 import SpringStudy.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +13,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpRequest;
 
 
 @Controller

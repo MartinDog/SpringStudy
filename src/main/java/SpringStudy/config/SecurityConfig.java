@@ -1,7 +1,5 @@
 package SpringStudy.config;
 
-import SpringStudy.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,11 +12,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
-    private UserRepository userRepo;
-    @Autowired
-    public SecurityConfig(UserRepository repository){
-        this.userRepo=repository;
-    }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity security)throws Exception{
         return security
@@ -28,7 +21,7 @@ public class SecurityConfig {
                                 "/auth/login?error",
                                 "/auth/login?logout",
                                 "/css/**", "/js/**", "/images/**", "/h2-console/**","*").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/admin/**","/ai/**").hasRole("ADMIN")
                                 .anyRequest().permitAll()
                 )
                 .formLogin(form -> form

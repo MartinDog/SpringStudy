@@ -4,6 +4,7 @@ import SpringStudy.entity.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.Collection;
 import java.util.List;
@@ -16,18 +17,16 @@ public class UserDetailAdaptor implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(user.getRole()));
+        return List.of(new SimpleGrantedAuthority(StringUtils.concat("ROLE_",user.getRole())));
     }
 
     @Override
     public String getPassword() {
-        System.out.println(this.user.getPassword());
         return this.user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        System.out.println("Searching User name: "+this.user.getUserName());
         return this.user.getUserName();
     }
 
